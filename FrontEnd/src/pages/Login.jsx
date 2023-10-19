@@ -1,0 +1,203 @@
+import React from 'react'
+import { useState } from 'react';
+import {useNavigate} from 'react-router-dom'
+import Logo from "../assets/purple.png";
+const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
+
+  const handleLogin = () => {
+    // Validate input, if needed
+    if (!email || !password) {
+      alert('Please enter both email and password.');
+      return;
+    }
+
+    // Call the login function with the email and password
+    handleLoginReq(email, password);
+  };
+
+  
+  async function handleLoginReq(email, password) {
+    // Define the URL of your Node.js backend API endpoint
+    const apiUrl = 'http://127.0.0.1:6001/auth/login';
+  
+    // Create a request object with the necessary headers and the POST method
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer'
+      },
+      body: JSON.stringify({ email, password }),
+    };
+  
+    // Send the login request
+    await fetch(apiUrl, requestOptions)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Authentication failed');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        //save to local storage
+        alert('Login successful', data);
+        localStorage.setItem("token",data.token);
+        
+        navigate('/', { replace: true });
+       
+      })
+      .catch((error) => {
+        //show appropriate error
+        console.error('Error:', error);
+        alert("Incorrect Username Or password")
+        navigate('/signin', { replace: true });
+        
+      });
+  }
+
+
+  return (
+    <section className="relative z-2">
+        <div className="md:grid md:grid-cols-2 grid-cols-1">
+          <div className="collapse bg-indigo-500 md:visible">
+            <img
+              src={Logo}
+              className="md:hidden hidden absolute z-50 rotate-45"
+              alt="Purple"
+            />
+          </div>
+          <div className="min-h-screen  bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8 ">
+            {/* This is the Login form */}
+            {/* <img
+              src={Logo}
+              className="md:hidden hidden absolute z-50 rotate-45"
+              alt="Purple"
+            /> */}
+            <div className="sm:mx-auto sm:w-full sm:max-w-md">
+              <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                Login
+              </h2>
+            </div>
+            <div className="flex justify-center">
+              {" "}
+              <span className="relative px-1 w-16">
+                <div className="absolute inset-x-0 top-1 bottom-0 h-3 transform -skew-x-[30deg] bg-indigo-500" />
+              </span>
+            </div>
+
+            <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md ">
+              <div className="bg-violet-200 py-8 px-4 shadow sm:rounded-lg sm:px-10  relative z-4">
+                <form className="space-y-6" action="#" method="POST">
+                  <div>
+                    <div className="mt-1">
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        autoComplete="email"
+                        required
+                        className="appearance-none rounded-md relative block w-full px-3 py-2 border-b-2 border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        placeholder="Enter your email address"
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="mt-1">
+                      <input
+                        id="password"
+                        name="password"
+                        type="password"
+                       
+                        required
+                        className="appearance-none rounded-md relative block w-full px-3 py-2 bord border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        placeholder="Enter your password"
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center">
+                      
+                    </div>
+
+                    <div className="text-sm">
+                      <a
+                        href="#"
+                        className="font-medium text-blue-600 hover:text-blue-500"
+                      >
+                        Forgot your password?
+                      </a>
+                    </div>
+                  </div>
+
+                  <div>
+                    <button
+                      type="submit"
+                      className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      onClick={(e)=>{
+                        e.preventDefault();
+                        handleLogin()}}
+                    >
+                      Sign in
+                    </button>
+                  </div>
+                </form>
+                <div className="mt-6">
+                  <div className="relative">
+                    <div className="absolute inset-0 flex items-center">
+                      <div className="w-full border-t border-gray-300"></div>
+                    </div>
+                    <div className="relative flex justify-center text-sm">
+                      <span
+                        className="px-2 
+                       text-gray-500"
+                      >
+                        Or Login with
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 grid grid-cols-2 gap-3">
+                    <div>
+                      <a
+                        href="#"
+                        className="w flex items-center justify-center p-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
+                      >
+                        <img
+                          className="h-5 w-5"
+                          src="https://www.svgrepo.com/show/512120/facebook-176.svg"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+
+                    <div>
+                      <a
+                        href="#"
+                        className="w- flex items-center justify-center px-3 py-3 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
+                      >
+                        <img
+                          className="h-6 w-6"
+                          src="https://www.svgrepo.com/show/506498/google.svg"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  )
+}
+
+export default Login
