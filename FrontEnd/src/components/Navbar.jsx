@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     
     <>
-     <section className="absolute md:hidden top-[-307px] left-[-104.67px] bg-indigo-500 w-[492.36px] h-96 [transform:_rotate(52.5deg)] [transform-origin:0_0]" id="h1">
+     <section className="absolute md:hidden top-[-307px] left-[-104.67px] bg-indigo-500 w-[492.36px] h-96 [transform:_rotate(52.5deg)] [transform-origin:0_0] z-10" id="h1">
     </section> 
      <div className="flex items-center justify-between  border-gray-400 py-16 md:py-2 px-3 md:px-">
       <a href="/" className='h-4 w-4 md:h-14 md:w-64 cover'>

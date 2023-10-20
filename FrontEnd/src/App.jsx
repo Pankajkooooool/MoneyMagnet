@@ -12,31 +12,45 @@ import { useState } from "react";
 
 
 function App() {
-  let x = localStorage.getItem("token");
-  let isAuth = true;
- 
-  if( x==null){
-    isAuth = false;
-  }else{
-    isAuth = true;
+   
+  const [isAuth, setisAuth] = useState(false)
+  const updateAuth = (newAuth) =>{
+    setisAuth(newAuth);
+    
   }
+  let x = localStorage.getItem("token");
+  function validateAuth(x){
+    
+    if(!x || x==null || x==undefined){
+     
+      return false
+    }else{
+     
+      return true;
+    }
+  }
+  
+  
+ 
+ 
 
-  const [Savings, setSavings] = useState(1000000);
+  const [Savings, setSavings] = useState(localStorage.getItem("salary"));
 
   const updateSavings = (newMessage) => {
     setSavings(newMessage);
+    localStorage.setItem("salary",newMessage)
   };
 
   return (
   <>
   <Navbar/>
   <Routes>
-    <Route path="/" element={localStorage.getItem("token") ? <Home savings={Savings} updateSavings={updateSavings} />: <Navigate to='/login' />} />
-    <Route path="login" element={(!localStorage.getItem("token") || localStorage.getItem("token") == undefined )?<Login /> : <Navigate to='/' />} />
-    <Route path="signin" element={(!localStorage.getItem("token") || localStorage.getItem("token") == undefined )?<Signin />: <Navigate to='/' />} />
-    <Route path="/mid" element={localStorage.getItem("token") ? <MidRisk savings={Savings} />: <Navigate to='/login' />} />
-    <Route path="/low" element={localStorage.getItem("token") ? <LowRisk savings={Savings}/>: <Navigate to='/login' />} />
-    <Route path="/high" element={localStorage.getItem("token") ? <HighRisk savings={Savings}/>: <Navigate to='/login' />} />
+    <Route path="/" element={(isAuth ||validateAuth(x)) ? <Home savings={Savings} updateSavings={updateSavings} />: <Navigate to='/login' />} />
+    <Route path="login" element={(isAuth ||validateAuth(x)) ?<Navigate to='/' /> : <Login updateAuth={updateAuth}/>  } />
+    <Route path="signin" element={(isAuth ||validateAuth(x))?<Navigate to='/' />: <Signin  updateAuth={updateAuth}/> } />
+    <Route path="/mid" element={(isAuth ||validateAuth(x))? <MidRisk savings={Savings} />: <Navigate to='/login' />} />
+    <Route path="/low" element={(isAuth ||validateAuth(x))? <LowRisk savings={Savings}/>: <Navigate to='/login' />} />
+    <Route path="/high" element={(isAuth ||validateAuth(x))? <HighRisk savings={Savings}/>: <Navigate to='/login' />} />
   </Routes>
   <Footer />
     </>

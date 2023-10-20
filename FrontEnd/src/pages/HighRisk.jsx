@@ -19,9 +19,9 @@ const HighRisk = ({savings}) => {
         <div class="flex flex-wrap -m-4 text-center">
           <div class="p-4 w-full flex justify-center">
             <h2 class="title-font font-medium sm:text-4xl text-2xl text-gray-900 bg-violet-200 w-1/2 rounded">
-              Rs: {savings}
+              Rs: {savings*0.33}
             </h2>
-            
+            {/* https://api.render.com/deploy/srv-ckonecnkc2qc73ejr2g0?key=35cLm6fz1Wc */}
           </div>
         </div>
       </div>

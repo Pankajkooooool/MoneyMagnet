@@ -1,8 +1,8 @@
 import React from 'react'
 import { useState } from 'react';
-import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import Logo from "../assets/purple.png";
-const Signin = () => {
+const Signin = ({isAuth,updateAuth}) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -26,7 +26,7 @@ const Signin = () => {
   
   async function handleLoginReq(email, password,firstName,lastName,dob,phone) {
     // Define the URL of your Node.js backend API endpoint
-    const apiUrl = 'http://127.0.0.1:6001/auth/register';
+    const apiUrl = `https://money-magnet.onrender.com/auth/register`;
   
     // Create a request object with the necessary headers and the POST method
     const requestOptions = {
@@ -50,7 +50,7 @@ const Signin = () => {
         //save to local storage
         alert('Userr successfully Created', data);
         localStorage.setItem("token",data.token);
-        
+        updateAuth(true);
         navigate('/', { replace: true });
        
       })
@@ -66,19 +66,10 @@ const Signin = () => {
     <section className="relative z-2">
         <div className="md:grid md:grid-cols-2 grid-cols-1">
           <div className="collapse bg-indigo-500 md:visible">
-            <img
-              src={Logo}
-              className="md:hidden hidden absolute z-50 rotate-45"
-              alt="Purple"
-            />
+          
           </div>
-          <div className="min-h-screen  bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8 ">
-            {/* This is the Login form */}
-            {/* <img
-              src={Logo}
-              className="md:hidden hidden absolute z-50 rotate-45"
-              alt="Purple"
-            /> */}
+          <div className="min-h-screen   flex flex-col justify-center py-12 sm:px-6 lg:px-8 ">
+           
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
               <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
                 Sign Up
@@ -86,7 +77,7 @@ const Signin = () => {
             </div>
             <div className="flex justify-center">
               {" "}
-              <span className="relative px-1 w-16">
+              <span className="relative px-1 w-24">
                 <div className="absolute inset-x-0 top-1 bottom-0 h-3 transform -skew-x-[30deg] bg-indigo-500" />
               </span>
             </div>
@@ -197,7 +188,14 @@ const Signin = () => {
                   </div>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center">
-                      
+                    <div className="text-sm">
+                      <a
+                        href="#"
+                        className="font-medium text-gray-900 "
+                      >
+                        Already a User? <Link to="/login" replace={true} className='text-indigo-600'>Login</Link> 
+                      </a>
+                    </div>
                     </div>
 
                     

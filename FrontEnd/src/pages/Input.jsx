@@ -73,12 +73,15 @@ const Input = ({savings,updateSavings}) => {
           <button className="text-white bg-indigo-500 border-0 py-2 px-12 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={showLoan}>Yes</button>
           <button className="text-white bg-indigo-500 border-0 py-2 px-12 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={()=> {calcTaxes();
           var dino= calculateIncomeTax(parseInt(BaseSal))
-            setTax(dino)
+          setTax(dino)
           
-          setNewSavings(parseInt((parseInt(BaseSal)-parseInt(Tax)) - (parseInt(Needs) + parseInt(Wants))));
-
-          console.log(newSavings,'hug dia',(Needs+Wants))
+         
+            setTimeout(() => {
+              setNewSavings(parseInt((parseInt(BaseSal)-parseInt(dino)) - (parseInt(Needs) + parseInt(Wants))));
+              console.log(newSavings,'hug dia',(Needs+Wants))
          handleUpdateMessage();
+            }, 1500);
+          
          
         }
         }>No</button>
