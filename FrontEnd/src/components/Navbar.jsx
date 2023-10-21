@@ -23,7 +23,6 @@ const Navbar = () => {
             <span className="block h-0.5 w-8 animate-pulse bg-gray-600"></span>
             <span className="block h-0.5 w-8 animate-pulse bg-gray-600"></span>
           </div>
-
           <div className={isNavOpen ? "showMenuNav" : "hideMenuNav"}>
             <div
               className="absolute top-0 right-0 px-8 py-8"
@@ -44,7 +43,26 @@ const Navbar = () => {
             </div>
             <ul className="flex flex-col items-center justify-between min-h-[250px]">
               <li className=" border-gray-400 my-8 uppercase">
-                <a  href="/login">Logout</a>
+                <button onClick={()=>{
+                  localStorage.removeItem("token");
+                  navigate('/login', { replace: true });
+                  console.log("Logged out succesfully")
+                }}  >Logout</button>
+              </li>
+              <li className=" border-gray-400 my-8 uppercase">
+                <a href='/low'  >Low Risk</a>
+              </li>
+              <li className=" border-gray-400 my-8 uppercase">
+                <a href='/mid'  >Mid Risk</a>
+              </li>
+              <li className=" border-gray-400 my-8 uppercase">
+                <a href='/high'  >High Risk</a>
+              </li>
+              <li className=" border-gray-400 my-8 uppercase">
+                <a href='/ef'  >Emergency Funds</a>
+              </li>
+              <li className=" border-gray-400 my-8 uppercase">
+                <a href='/advice'  >Advice</a>
               </li>
               
             </ul>
@@ -53,7 +71,11 @@ const Navbar = () => {
 
         <ul className="DESKTOP-MENU hidden space-x-8 lg:flex">
           <li>
-            <a href="/login">Logout</a>
+            <button onClick={()=>{
+                  localStorage.removeItem("token");
+                  console.log("Logged out succesfully")
+                  navigate('/login', { replace: true });
+                }}>Logout</button>
           </li>
          
         </ul>

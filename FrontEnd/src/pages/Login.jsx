@@ -66,7 +66,7 @@ const Login = ({isAuth,updateAuth}) => {
             </h2>
           </div>
           <div className="flex justify-center">
-            {" "}
+          
             <span className="relative px-1 w-20">
               <div className="absolute inset-x-0 top-1 bottom-0 h-3 transform -skew-x-[30deg] bg-indigo-500" />
             </span>
