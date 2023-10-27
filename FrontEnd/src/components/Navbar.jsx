@@ -1,7 +1,7 @@
 import {React ,useState} from 'react'
 import { useNavigate } from 'react-router-dom'
-import Logo from '../assets/mm.jpg'
-const Navbar = () => {
+import Logo from '../assets/Logo.png'
+const Navbar = ({updateAuth}) => {
   const navigate = useNavigate()
   const [isNavOpen, setIsNavOpen] = useState(false);
   return (
@@ -10,7 +10,7 @@ const Navbar = () => {
      <section className="absolute md:hidden top-[-307px] left-[-104.67px] bg-indigo-500 w-[492.36px] h-96 [transform:_rotate(52.5deg)] [transform-origin:0_0] z-10" id="h1">
     </section> 
      <div className="flex items-center justify-between  border-gray-400 py-16 md:py-2 px-3 md:px-">
-      <a href="/" className='h-4 w-4 md:h-14 md:w-64 cover'>
+      <a href="/" className='h-4 w-4 pt-2 md:h-14 md:w-64 cover'>
         <img src={Logo} alt="logo" />
       </a>
       <nav>
@@ -45,6 +45,7 @@ const Navbar = () => {
               <li className=" border-gray-400 my-8 uppercase">
                 <button onClick={()=>{
                   localStorage.removeItem("token");
+                  updateAuth(false)
                   navigate('/login', { replace: true });
                   console.log("Logged out succesfully")
                 }}  >Logout</button>
@@ -74,6 +75,7 @@ const Navbar = () => {
             <button onClick={()=>{
                   localStorage.removeItem("token");
                   console.log("Logged out succesfully")
+                  updateAuth(false)
                   navigate('/login', { replace: true });
                 }}>Logout</button>
           </li>

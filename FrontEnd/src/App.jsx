@@ -35,16 +35,16 @@ function App() {
  
  
 
-  const [Savings, setSavings] = useState(localStorage.getItem("salary"));
+  const [Savings, setSavings] = useState(localStorage.getItem("salary")||0);
 
   const updateSavings = (newMessage) => {
     setSavings(newMessage);
-    localStorage.setItem("salary",newMessage)
+    localStorage.savings =newMessage;
   };
 
   return (
   <>
-  <Navbar/>
+  <Navbar updateAuth={updateAuth} />
   <Routes>
     <Route path="/" element={(isAuth ||validateAuth(x)) ? <Home savings={Savings} updateSavings={updateSavings} />: <Navigate to='/login' />} />
     <Route path="login" element={(isAuth ||validateAuth(x)) ?<Navigate to='/' /> : <Login updateAuth={updateAuth}/>  } />

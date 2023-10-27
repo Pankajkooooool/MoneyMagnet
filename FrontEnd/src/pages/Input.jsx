@@ -3,21 +3,35 @@ import { Link } from "react-router-dom";
 
 const Input = ({ savings, updateSavings }) => {
   const [Tax, setTax] = useState(0);
-  const [newSavings, setNewSavings] = useState(0);
-  const [BaseSal, setBaseSal] = useState(0);
-  const [Wants, setWants] = useState(0);
-  const [Needs, setNeeds] = useState(0);
+  const [newSavings, setNewSavings] = useState((localStorage.getItem("savings")||0));
+  const [BaseSal, setBaseSal] = useState((localStorage.getItem("basesal")||0));
+  const [Wants, setWants] = useState((localStorage.getItem("wants")||0));
+  const [Needs, setNeeds] = useState((localStorage.getItem("needs")||0));
+  const [showModal, setshowModal] = useState(false)
 
   function calculateTaxesAndSavings() {
     const totalIncome = parseInt(BaseSal);
     const tax = calculateIncomeTax(totalIncome);
     const needsAndWants = parseInt(Needs) + parseInt(Wants);
-    const savings = totalIncome - tax - needsAndWants;
-
+    const calculatedSavings = totalIncome - tax - needsAndWants;
+    setNewSavings(calculatedSavings);
     setTax(tax);
-    setNewSavings(savings);
 
-    handleUpdateMessage();
+    if(calculatedSavings<0){
+      alert("Savings Cannot be in Negative please Re-enter")
+      setBaseSal(0);
+      setWants(0);
+      handleUpdateMessage(0,0,0,0)
+      
+    }
+    else{
+    
+    setTimeout(() => {
+      handleUpdateMessage(BaseSal,newSavings,Needs,Wants);
+      document.getElementById("Nextbtn").classList.remove("hidden")
+    }, 1500);
+  }
+    
   }
 
   function calculate(amount, percent) {
@@ -42,10 +56,13 @@ const Input = ({ savings, updateSavings }) => {
     }
   }
 
-  const handleUpdateMessage = () => {
+  const handleUpdateMessage = (baseSalary,newSaving,needs,wants) => {
     updateSavings(newSavings);
-    localStorage.setItem("Savings",newSavings);
-    localStorage.setItem("Needs",Needs);
+
+    localStorage.setItem("basesal",baseSalary);
+    localStorage.setItem("savings",newSaving);
+    localStorage.setItem("needs",needs);
+    localStorage.setItem("wants",wants);
   };
 
   return (
@@ -73,9 +90,10 @@ const Input = ({ savings, updateSavings }) => {
                 type="number"
                 id="BaseSalary"
                 name="full-name"
-                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 placeholder="Enter Salary in ₹"
                 onChange={(e) => setBaseSal(e.target.value)}
+                value={BaseSal}
               />
             </div>
             <div className="relative mb-4">
@@ -89,9 +107,10 @@ const Input = ({ savings, updateSavings }) => {
                 type="number"
                 id="email"
                 name="Needs"
-                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 placeholder="Enter Your Needs"
                 onChange={(e) => setNeeds(e.target.value)}
+                value={Needs}
               />
             </div>
             <div className="relative mb-4">
@@ -105,34 +124,79 @@ const Input = ({ savings, updateSavings }) => {
                 type="number"
                 id="email"
                 name="Wants"
-                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 placeholder="Enter Your Wants"
                 onChange={(e) => setWants(e.target.value)}
+                value={Wants}
               />
             </div>
           </div>
-          <div className="relative mb-4">
+          <div className="relative mb- flex-col flex  items-center justify-center w-full ">
             <div className="leading-7 text-sm text-gray-600">
               
               Calculate Taxes and Savings
             </div>
-            <div className="flex justify-between gap-4">
-              <button
-                className="text-white bg-indigo-500 border-0 py-2 px-12 focus:outline-none hover-bg-indigo-600 rounded text-lg"
-                onClick={calculateTaxesAndSavings}
+            <button
+                className="text-white bg-indigo-600 border-0 py-2 px-12 focus:outline-none hover:bg-indigo-700 rounded text-lg"
+                onClick={
+                  () =>{ setshowModal(true)
+                    calculateTaxesAndSavings();
+                  }
+                }
               >
                 Calculate
               </button>
-            </div>
+           
           </div>
         </div>
-        <div id="showTaxes" className="text-center">
+        {showModal ? (
+        <div>
+          <div
+            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
+          >
+            <div className="relative w-auto my-6 mx-auto max-w-3xl">
+              {/*content*/}
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                {/*header*/}
+                <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+                  <h3 className="text-3xl font-semibold">
+                   Taxes and Savings
+                  </h3>
+                  
+                </div>
+                {/*body*/}
+                <div className="relative p-6 flex-auto">
+                  <p className="my-4 text-blueGray-500 text-lg leading-relaxed">
+                  <div id="showTaxes" className="text-center">
           Taxes to be paid: {Tax} <br />
           Savings: {newSavings}
         </div>
-        <div className="flex justify-center">
-          <Link to="/low">
-            <span className="text-white text-center bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                  </p>
+                </div>
+                {/*footer*/}
+                <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                  
+                  <button
+                    className="bg-indigo-600 text-white active:bg-indigo-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    type="button"
+                    onClick={() => setshowModal(false)}
+                  >
+                    Close and Save
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+        </div>
+      ) : null}
+
+       
+
+
+        <div id="Nextbtn" className="flex justify-center pt-6 hidden">
+          <Link to="/ef">
+            <span className="text-white text-center bg-indigo-600 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
               Next
             </span>
           </Link>

@@ -65,7 +65,7 @@ const Signin = ({isAuth,updateAuth}) => {
   return (
     <section className="relative z-2">
         <div className="md:grid md:grid-cols-2 grid-cols-1">
-          <div className="collapse bg-indigo-500 md:visible">
+          <div className="collapse bg-indigo-600 md:visible">
           
           </div>
           <div className="min-h-screen   flex flex-col justify-center py-12 sm:px-6 lg:px-8 ">
@@ -78,7 +78,7 @@ const Signin = ({isAuth,updateAuth}) => {
             <div className="flex justify-center">
               {" "}
               <span className="relative px-1 w-24">
-                <div className="absolute inset-x-0 top-1 bottom-0 h-3 transform -skew-x-[30deg] bg-indigo-500" />
+                <div className="absolute inset-x-0 top-1 bottom-0 h-3 transform -skew-x-[30deg] bg-indigo-600" />
               </span>
             </div>
 
@@ -93,7 +93,7 @@ const Signin = ({isAuth,updateAuth}) => {
                         type="email"
                         autoComplete="email"
                         required
-                        className="appearance-none rounded-md relative block w-full px-3 py-2 border-b-2 border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        className="appearance-none rounded-md relative block w-full px-3 py-2 border-b-2 border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-600 focus:border-indigo-600 focus:z-10 sm:text-sm"
                         placeholder="Enter your email address"
                         onChange={(e) => setEmail(e.target.value)}
                       />
@@ -109,7 +109,7 @@ const Signin = ({isAuth,updateAuth}) => {
                         type="text"
                        
                         required
-                        className="appearance-none rounded-md relative block w-full px-3 py-2 bord border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        className="appearance-none rounded-md relative block w-full px-3 py-2 bord border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-600 focus:border-indigo-600 focus:z-10 sm:text-sm"
                         placeholder="Enter your First Name"
                         onChange={(e) => setfirstName(e.target.value)}
                       />
@@ -123,7 +123,7 @@ const Signin = ({isAuth,updateAuth}) => {
                         type="text"
                        
                         required
-                        className="appearance-none rounded-md relative block w-full px-3 py-2 bord border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        className="appearance-none rounded-md relative block w-full px-3 py-2 bord border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-600 focus:border-indigo-600 focus:z-10 sm:text-sm"
                         placeholder="Enter your Last Name"
                         onChange={(e) => setlastName(e.target.value)}
                       />
@@ -137,7 +137,7 @@ const Signin = ({isAuth,updateAuth}) => {
                         type="number"
                        
                         required
-                        className="appearance-none rounded-md relative block w-full px-3 py-2 bord border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        className="appearance-none rounded-md relative block w-full px-3 py-2 bord border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-600 focus:border-indigo-600 focus:z-10 sm:text-sm"
                         placeholder="Enter your Phone"
                         onChange={(e) => setphone(e.target.value)}
                       />
@@ -152,7 +152,7 @@ const Signin = ({isAuth,updateAuth}) => {
                         type="date"
                        
                         required
-                        className="appearance-none rounded-md relative block w-full px-3 py-2 bord border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        className="appearance-none rounded-md relative block w-full px-3 py-2 bord border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-600 focus:border-indigo-600 focus:z-10 sm:text-sm"
                         placeholder="Enter your Date of Birth"
                         onChange={(e) => setdob(e.target.value)}
                       />
@@ -166,7 +166,7 @@ const Signin = ({isAuth,updateAuth}) => {
                         type="password"
                        
                         required
-                        className="appearance-none rounded-md relative block w-full px-3 py-2 bord border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        className="appearance-none rounded-md relative block w-full px-3 py-2 bord border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-600 focus:border-indigo-600 focus:z-10 sm:text-sm"
                         placeholder="Enter your password"
                         onChange={(e) => setPassword(e.target.value)}
                       />
@@ -180,7 +180,7 @@ const Signin = ({isAuth,updateAuth}) => {
                         type="password"
                        
                         required
-                        className="appearance-none rounded-md relative block w-full px-3 py-2 bord border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        className="appearance-none rounded-md relative block w-full px-3 py-2 bord border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-600 focus:border-indigo-600 focus:z-10 sm:text-sm"
                         placeholder="Confirm your password"
                         onChange={(e) => setCPassword(e.target.value)}
                       />
@@ -204,7 +204,7 @@ const Signin = ({isAuth,updateAuth}) => {
                   <div>
                     <button
                       type="submit"
-                      className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600"
                       onClick={(e)=>{
                         e.preventDefault();
                         handleLogin()}}

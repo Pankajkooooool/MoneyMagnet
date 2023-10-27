@@ -1,62 +1,115 @@
-import React from 'react'
-import inflation from '../assets/inflation.png'
-export const Emergency = () => {
-  const userNeeds = parseFloat(localStorage.getItem("Needs"))
-  return (
+import React, { useEffect, useState } from "react";
+import inflation from "../assets/inflation.png";
+import { Link } from "react-router-dom";
 
-    <div>
-      <section class="text-gray-600 body-font overflow-hidden">
-  <div class="container px-5 pt-24 pb-12 mx-auto" bis_skin_checked="1">
-    <div class="-my-8 divide-y-2 divide-gray-100" bis_skin_checked="1">
-      <div class="py-8 flex flex-wrap md:flex-nowrap" bis_skin_checked="1">
-       
-        <div class="md:flex-grow" bis_skin_checked="1">
-          <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">Emergency Corpous Funds and Inflation</h2>
-          <p class="leading-relaxed">Glossier echo park pug, church-key sartorial biodiesel vexillologist pop-up snackwave ramps cornhole. Marfa 3 wolf moon party messenger bag selfies, poke vaporware kombucha lumbersexual pork belly polaroid hoodie portland craft beer.</p>
-          
-        </div>
+export const Emergency = () => {
+  const [userNeeds, setUserNeeds] = useState(0);
+  const [userSavings, setUserSavings] = useState(0);
+
+  useEffect(() => {
+    const needs = parseInt(localStorage.getItem("needs") || 0);
+    const savings = parseInt(localStorage.getItem("savings"));
+    setUserNeeds(needs);
+    setUserSavings(savings);
+  }, []);
+
+  const emergencyFund = userNeeds * 0.5;
+  const savingsForEmergency = userSavings * 0.1;
+
+  return (
+    <>
+      <div>
+        <section className="text-gray-600 body-font overflow-hidden">
+          <div className="container px-5 pt-24 pb-12 mx-auto">
+            <div className="-my-8 divide-y-2 divide-gray-100">
+              <div className="py-8 flex flex-wrap md:flex-nowrap">
+                <div className="md:flex-grow">
+                  <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">
+                    Emergency Corpus Funds and Inflation
+                  </h2>
+                  <p className="leading-relaxed">
+                    Have six months of needs such that you can lead your life
+                    even after losing your job or survive in the market during a
+                    pandemic.
+                    <span className="title-font font-medium sm:text-xl text-xl text-gray-900 bg-violet-200 px-1 rounded">
+                      
+                      ₹: {emergencyFund}
+                    </span>
+                    <br /> Invest this amount in a bank account or an F.D.at a 6
+                    % interest rate for a small term, usually 3 to 6 months.
+                  </p>
+                </div>
+              </div>
+              <div className="md:flex-grow text-center">
+                <p className="leading-relaxed">
+                  As of now, invest 10 % of your savings to accomplish the
+                  emergency fund, i.e., invest
+                  <span className="title-font font-medium sm:text-xl text-xl text-gray-900 bg-violet-200 px-1 rounded">
+                    
+                    ₹: {savingsForEmergency}
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="text-gray-600 body-font overflow-hidden">
+          <div className="container px-5 py-14 mx-auto">
+            <div className="lg:w-4/5 mx-auto flex flex-wrap">
+              <div className="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0">
+                <h1 className="text-gray-900 text-3xl title-font font-medium mb-4">
+                  
+                  Inflation and How it Defines our Savings
+                </h1>
+                <p className="leading-relaxed mb-4">
+                  Inflation is a rise in prices, which can be translated as the
+                  decline of purchasing power over time.The rate at which
+                  purchasing power drops can be reflected in the average price
+                  increase of a basket of selected goods and services over some
+                  period of time.The rise in prices, which is often expressed as
+                  a percentage, means that a unit of currency effectively buys
+                  less than it did in prior periods.
+                </p>
+                <p className="leading-relaxed mb-4">
+                  Inflation is the general increase of prices over time.It
+                  reduces the value of your savings because your money can buy
+                  less in the future than it can now.To protect your savings
+                  from inflation, you need to invest them in a way that earns
+                  interest higher than the inflation rate.
+                </p>
+                <div className="py-4 flex flex-wrap md:flex-nowrap">
+                  <div className="md:flex-grow">
+                    <p className="leading-relaxed">
+                      The Current Inflation rate of India is {" "}
+                      <span className="title-font font-medium sm:text-xl text-xl text-gray-900 bg-violet-200 px-1 rounded">
+                        6.70 %
+                      </span>{" "}
+                      with an Annual change of rate 3.06 % .
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <img
+                alt="ecommerce"
+                className="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded"
+                src={inflation}
+              />
+            </div>
+          </div>
+          <div className="flex justify-center gap-5 mt-4">
+            <Link to="/">
+              <button className="text-white bg-indigo-600 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                Prev
+              </button>
+            </Link>
+            <Link to="/low">
+              <button className="text-white bg-indigo-600 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                Next
+              </button>
+            </Link>
+          </div>
+        </section>
       </div>
-      <div class="py-4 flex flex-wrap md:flex-nowrap" bis_skin_checked="1">
-       
-        <div class="md:flex-grow" bis_skin_checked="1">
-          <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">Meditation bushwick direct trade taxidermy shaman</h2>
-          <p class="leading-relaxed">Glossier echo park pug, church-key sartorial biodiesel vexillologist pop-up snackwave ramps cornhole. Marfa 3 wolf moon party messenger bag selfies, poke vaporware kombucha lumbersexual pork belly polaroid hoodie portland craft beer. Have 50% of Needs in a bank account</p>
-          <span class="title-font font-medium sm:text-4xl text-2xl text-gray-900 bg-violet-200 px-4 rounded">
-              Rs: {userNeeds *0.5} 
-            </span>
-        </div>
-      </div>
-      <div class="py-8 flex flex-wrap md:flex-nowrap" bis_skin_checked="1">
-     
-        <div class="md:flex-grow" bis_skin_checked="1">
-          <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">Woke master cleanse drinking vinegar salvia</h2>
-          <p class="leading-relaxed">Glossier echo park pug, church-key sartorial biodiesel vexillologist pop-up snackwave ramps cornhole. Marfa 3 wolf moon party messenger bag selfies, poke vaporware kombucha lumbersexual pork belly polaroid hoodie portland craft beer.</p>
-          
-        <a class="text-indigo-500 inline-flex items-center mt-4">Learn More
-            <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14"></path>
-              <path d="M12 5l7 7-7 7"></path>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="text-gray-600 body-font overflow-hidden">
-  <div class="container px-5 py-14 mx-" bis_skin_checked="1">
-    <div class="lg:w-4/5 mx-auto flex flex-wrap" bis_skin_checked="1">
-      <div class="lg:w-1/2 w-full lg:pr-10 lg:py-6 mb-6 lg:mb-0" bis_skin_checked="1">
-        
-        <h1 class="text-gray-900 text-3xl title-font font-medium mb-4"> Inflation and How it Defines our Savings </h1>
-        
-        <p class="leading-relaxed mb-4">Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam inxigo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean.</p>
-    
-      </div>
-      <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src={inflation} />
-    </div>
-  </div>
-</section>
-    </div>
-  )
-}
+    </>
+  );
+};
