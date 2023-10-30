@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Input = ({ savings, updateSavings }) => {
   const [Tax, setTax] = useState(0);
-  const [newSavings, setNewSavings] = useState((localStorage.getItem("savings")||0));
+  const [NewSavings, setNewSavings] = useState((localStorage.getItem("savings")||0));
   const [BaseSal, setBaseSal] = useState((localStorage.getItem("basesal")||0));
   const [Wants, setWants] = useState((localStorage.getItem("wants")||0));
   const [Needs, setNeeds] = useState((localStorage.getItem("needs")||0));
@@ -11,13 +11,18 @@ const Input = ({ savings, updateSavings }) => {
 
   function calculateTaxesAndSavings() {
     const totalIncome = parseInt(BaseSal);
+
+    
     const tax = calculateIncomeTax(totalIncome);
     const needsAndWants = parseInt(Needs) + parseInt(Wants);
+    
     const calculatedSavings = totalIncome - tax - needsAndWants;
+
+
     setNewSavings(calculatedSavings);
     setTax(tax);
 
-    if(calculatedSavings<0){
+    if(calculatedSavings<=0){
       alert("Savings Cannot be in Negative please Re-enter")
       setBaseSal(0);
       setWants(0);
@@ -27,7 +32,7 @@ const Input = ({ savings, updateSavings }) => {
     else{
     
     setTimeout(() => {
-      handleUpdateMessage(BaseSal,newSavings,Needs,Wants);
+      handleUpdateMessage(BaseSal,calculatedSavings,Needs,Wants);
       document.getElementById("Nextbtn").classList.remove("hidden")
     }, 1500);
   }
@@ -57,10 +62,12 @@ const Input = ({ savings, updateSavings }) => {
   }
 
   const handleUpdateMessage = (baseSalary,newSaving,needs,wants) => {
-    updateSavings(newSavings);
+    updateSavings(newSaving);
 
     localStorage.setItem("basesal",baseSalary);
-    localStorage.setItem("savings",newSaving);
+    localStorage.savings= newSaving;
+    console.log("Updating savings by ",newSaving)
+    // localStorage.setItem("savings",newSaving);
     localStorage.setItem("needs",needs);
     localStorage.setItem("wants",wants);
   };
@@ -84,16 +91,16 @@ const Input = ({ savings, updateSavings }) => {
                 htmlFor="full-name"
                 className="leading-7 text-sm text-gray-600"
               >
-                Yearly Salary
+               Enter your yearly salary
               </label>
               <input
                 type="number"
                 id="BaseSalary"
                 name="full-name"
                 className="w-full bg-white rounded border border-gray-300 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                placeholder="Enter Salary in ₹"
+            
                 onChange={(e) => setBaseSal(e.target.value)}
-                value={BaseSal}
+                placeholder={BaseSal}
               />
             </div>
             <div className="relative mb-4">
@@ -101,16 +108,16 @@ const Input = ({ savings, updateSavings }) => {
                 htmlFor="email"
                 className="leading-7 text-sm text-gray-600"
               >
-                Your Needs
+                Enter your yearly Needs
               </label>
               <input
                 type="number"
                 id="email"
                 name="Needs"
                 className="w-full bg-white rounded border border-gray-300 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                placeholder="Enter Your Needs"
+                
                 onChange={(e) => setNeeds(e.target.value)}
-                value={Needs}
+                placeholder={Needs}
               />
             </div>
             <div className="relative mb-4">
@@ -118,16 +125,16 @@ const Input = ({ savings, updateSavings }) => {
                 htmlFor="email"
                 className="leading-7 text-sm text-gray-600"
               >
-                Your Wants
+                Enter Your Wants
               </label>
               <input
                 type="number"
                 id="email"
                 name="Wants"
                 className="w-full bg-white rounded border border-gray-300 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                placeholder="Enter Your Wants"
+                
                 onChange={(e) => setWants(e.target.value)}
-                value={Wants}
+                placeholder={Wants}
               />
             </div>
           </div>
@@ -139,8 +146,9 @@ const Input = ({ savings, updateSavings }) => {
             <button
                 className="text-white bg-indigo-600 border-0 py-2 px-12 focus:outline-none hover:bg-indigo-700 rounded text-lg"
                 onClick={
-                  () =>{ setshowModal(true)
-                    calculateTaxesAndSavings();
+                  () =>{ 
+                    if(BaseSal>0){setshowModal(true)
+                    calculateTaxesAndSavings();}
                   }
                 }
               >
@@ -166,12 +174,12 @@ const Input = ({ savings, updateSavings }) => {
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
-                  <p className="my-4 text-blueGray-500 text-lg leading-relaxed">
+                  <div className="my-4 text-blueGray-500 text-lg leading-relaxed">
                   <div id="showTaxes" className="text-center">
           Taxes to be paid: {Tax} <br />
-          Savings: {newSavings}
+          Savings: {NewSavings}
         </div>
-                  </p>
+                  </div>
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">

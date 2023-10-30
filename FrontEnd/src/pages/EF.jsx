@@ -3,8 +3,8 @@ import inflation from "../assets/inflation.png";
 import { Link } from "react-router-dom";
 
 export const Emergency = () => {
-  const [userNeeds, setUserNeeds] = useState(0);
-  const [userSavings, setUserSavings] = useState(0);
+  const [userNeeds, setUserNeeds] = useState(localStorage.getItem("needs") || 0);
+  const [userSavings, setUserSavings] = useState(localStorage.getItem("savings")||0);
 
   useEffect(() => {
     const needs = parseInt(localStorage.getItem("needs") || 0);
@@ -13,8 +13,8 @@ export const Emergency = () => {
     setUserSavings(savings);
   }, []);
 
-  const emergencyFund = userNeeds * 0.5;
-  const savingsForEmergency = userSavings * 0.1;
+  const emergencyFund = Math.floor(userNeeds * 0.5);
+  const savingsForEmergency = Math.floor( userSavings * 0.1);
 
   return (
     <>
