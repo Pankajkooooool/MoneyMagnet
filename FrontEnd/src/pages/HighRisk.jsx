@@ -13,7 +13,7 @@ const HighRisk = ({savings}) => {
       <div className="container px-5 pt-24 mx-auto">
         <div className="flex flex-col text- w-full mb-20">
           <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-          High Risk Investment Plan
+          <center >High Risk Investment Plan </center>
 
           </h1>
           <p className="lg:w-/3 mx-auto text-left leading-relaxed text-base">
@@ -36,17 +36,13 @@ const HighRisk = ({savings}) => {
       <div className="py-4 flex flex-wrap md:flex-nowrap" bis_skin_checked="1">
        
         <div className="md:flex-grow" bis_skin_checked="1">
-          <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">Stocks V/s Smallcase</h2>
+          <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">Stocks</h2>
           <p className="leading-relaxed">Stocks represent ownership shares in publicly traded companies and can offer the potential for substantial returns, but they are subject to market volatility.
           <br />
-          Small cases are investment portfolios curated around specific themes or strategies, providing a diversified approach to stock investing, aiming to capture growth opportunities while managing risk.
-          You can Know more about Smallcase <a className='text-indigo-500' href="https://www.smallcase.com/">Here</a>
-          <br />
-          Here are some handpicked stocks:</p>
-        
-        </div>
-      </div>
-      <div className="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2" bis_skin_checked="1">
+            Here are some Handpicked stocks :
+
+          </p>
+        <div className="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2" bis_skin_checked="1">
         
        
         <div className="p-2 sm:w-1/2 w-full" bis_skin_checked="1">
@@ -139,13 +135,11 @@ const HighRisk = ({savings}) => {
             <span className="title-font font-medium">State Bank of India </span>
           </div>
         </div>
-       
-
-
+       </div>
+       </div>
       </div>
+      
 
-
-      {/* <img className="lg:h-48 md:h-36 w-full object-cover object-center" src="https://dummyimage.com/720x400" alt="blog" /> */}
       <div className="pt-8 flex flex-wrap md:flex-nowrap" bis_skin_checked="1">
        
         
@@ -156,6 +150,74 @@ const HighRisk = ({savings}) => {
     </div>
   </div>
   
+</section>
+<section>
+    <div className="container px-5 pt-24 mx-auto">
+        <div className="flex flex-col w-full mb-20">
+            <h5 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
+                How to Invest in Stocks
+            </h5>
+            <div>
+      <h1>Guide to Investing in Stocks in India</h1>
+      <ol>
+        <li>    Open a Demat and trading account.</li>
+        <li>    Fund your account.</li>
+        <li>    Choose stocks to invest in.</li>
+        <li>    Place a trade.</li>
+        <li>    Monitor your investments.</li>
+      </ol>
+      <p>Here are some additional tips for investing in stocks in India:</p>
+      <ul>
+        <li>    Choose a stockbroker registered with SEBI.</li>
+        <li>    Understand the risks involved.</li>
+        <li>    Start small and invest for the long term.</li>
+        <li>    Diversify your portfolio.</li>
+        <li>    Reinvest your dividends.</li>
+      </ul>
+      <p>Keep in mind the following when investing in stocks in India:</p>
+      <ul>
+        <li>            You need a PAN card and an Aadhaar card.</li>
+        <li>    Your bank account should be linked to your Demat and trading account.</li>
+        <li>    There are different stock exchanges in India, like BSE and NSE.</li>
+        <li>    There are different types of stock brokers, such as full-service and discount brokers.</li>
+      </ul>
+      <p>If you are a beginner, it's a good idea to do some research and learn about the stock market before you start investing.</p>
+    </div>
+        </div>
+    </div>
+</section>
+<section>
+<div className="container px-5 pt-24 mx-auto">
+        <div className="flex flex-col w-full mb-20">
+            <h5 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
+                SmallCase
+            </h5>
+            <div>
+            Smallcases are a type of investment product that allows investors to build a low-cost, long-term, and diversified portfolio easily. Each smallcase is a professionally managed basket of stocks or ETFs that reflects a specific idea, objective, theme, or strategy.
+
+Some examples of smallcases include:
+
+Sector-specific smallcases: These smallcases allow investors to invest in a specific sector of the economy, such as healthcare, technology, or consumer staples.
+ Theme-based smallcases: These smallcases allow investors to invest in a specific theme, such as the future of work, electric vehicles, or sustainable investing.
+ Strategy-based smallcases: These smallcases allow investors to invest in a specific investment strategy, such as value investing, growth investing, or dividend investing.
+
+Smallcases offer a number of advantages over traditional investment products, such as mutual funds and stocks. First, smallcases are typically much lower cost than mutual funds. Second, smallcases are more flexible than stocks, as you can easily buy and sell smallcases without having to go through a broker. Third, smallcases are more transparent than mutual funds, as you can see exactly what stocks and ETFs are included in each smallcase.
+
+To invest in a smallcase, you simply need to open a smallcase account with a broker that offers smallcases. Once you have opened an account, you can browse the available smallcases and choose the ones that you want to invest in. You can then invest in smallcases with a lump sum or through regular investments.
+
+Smallcases can be a good option for investors of all experience levels. They are a relatively low-cost and easy way to build a diversified portfolio. Smallcases are also a good option for investors who want to invest in specific themes or strategies.
+
+Here are some of the key benefits of investing in smallcases:
+
+1.Low cost: Smallcases are typically much lower cost than mutual funds. This is because smallcase providers do not have the same overhead costs as mutual fund houses.
+2.Flexibility: Smallcases are more flexible than stocks. You can easily buy and sell smallcases without having to go through a broker. This makes it easy to rebalance your portfolio or take profits on your investments.
+3.Transparency: Smallcases are more transparent than mutual funds. You can see exactly what stocks and ETFs are included in each smallcase. This makes it easier to understand what you are investing in and to track your performance.
+4.Expertise: Smallcases are created by investment experts. This means that you can be confident that the smallcases you invest in are well-researched and have a good chance of success.
+
+If you are looking for a low-cost, flexible, and transparent way to invest, smallcases may be a good option for you.
+           </div>
+    </div>
+    </div>
 </section>
 <div className='flex justify-center gap-5'>
     <Link to="/mid">

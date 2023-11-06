@@ -18,7 +18,7 @@ const LowRisk = ({ savings }) => {
               <div className="py-8 flex flex-wrap md:flex-nowrap">
                 <div className="md:flex-grow">
                   <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">
-                    Low Risk Investment Plan
+                    <center >Low Risk Investment Plan </center>
                   </h2>
                   <p className="leading-relaxed">
                   In the realm of low-risk investments, These investments are focused on capital preservation and stability. Consider placing your money in:
@@ -72,6 +72,14 @@ const LowRisk = ({ savings }) => {
         </div>
       </div>
               </div>
+              <div className="py-8 flex flex-wrap md:flex-nowrap">
+                <div className="md:flex-grow">
+                  
+                  <p className="leading-relaxed">
+                  These Investments pay upto 6-8% ROI (return of Investment) annualy.They are preety safe and we would advice to have F.D. in AAA rated banks which would offer higher Interest rates.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -85,7 +93,7 @@ const LowRisk = ({ savings }) => {
       <div className="py-4 flex flex-wrap md:flex-nowrap" bis_skin_checked="1">
        
         <div className="md:flex-grow" bis_skin_checked="1">
-          <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">Where and How to get Started</h2>
+          <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">How can we do this investment</h2>
           <p className="leading-relaxed">Low-risk investments, such as Fixed Deposits and Public Provident Fund, are characterized by their safety and stability, making them ideal choices for risk-averse investors. These options offer guaranteed returns and are often associated with AAA-rated banks, ensuring higher interest rates, thus providing a secure avenue for preserving and growing your wealth.</p>
         
         </div>
@@ -120,9 +128,37 @@ const LowRisk = ({ savings }) => {
               <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
               <path d="M22 4L12 14.01l-3-3"></path>
             </svg>
-            <span className="title-font font-medium">Platforms Where you can buy.. Zero</span>
+            <span className="title-font font-medium">Zerodha</span>
           </div>
         </div>
+        <div className="p-2 sm:w-1/2 w-full" bis_skin_checked="1">
+          <div className="bg-gray-100 rounded flex p-4 h-full items-center" bis_skin_checked="1">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" strokeWidth="3" className="text-indigo-600 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+              <path d="M22 4L12 14.01l-3-3"></path>
+            </svg>
+            <span className="title-font font-medium">Groww</span>
+          </div>
+        </div>
+        <div className="p-2 sm:w-1/2 w-full" bis_skin_checked="1">
+          <div className="bg-gray-100 rounded flex p-4 h-full items-center" bis_skin_checked="1">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" strokeWidth="3" className="text-indigo-600 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+              <path d="M22 4L12 14.01l-3-3"></path>
+            </svg>
+            <span className="title-font font-medium">Upstox</span>
+          </div>
+        </div>
+        <div className="p-2 sm:w-1/2 w-full" bis_skin_checked="1">
+          <div className="bg-gray-100 rounded flex p-4 h-full items-center" bis_skin_checked="1">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" strokeWidth="3" className="text-indigo-600 w-6 h-6 flex-shrink-0 mr-4" viewBox="0 0 24 24">
+              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
+              <path d="M22 4L12 14.01l-3-3"></path>
+            </svg>
+            <span className="title-font font-medium">FundsIndia</span>
+          </div>
+        </div>
+        
       </div>
 
       <div className="flex justify-center gap-5 pt-3">
