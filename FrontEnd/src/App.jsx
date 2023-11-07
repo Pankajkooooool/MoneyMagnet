@@ -11,7 +11,7 @@ import Footer from './components/Footer'
 import { useState } from "react";
 import {Emergency as EF} from './pages/EF'
 import Advice from "./pages/Advice";
-
+import ScrollToTop from './components/scrollToTop';
 function App() {
    
   const [isAuth, setisAuth] = useState(false)
@@ -45,6 +45,7 @@ function App() {
   return (
   <>
   <Navbar updateAuth={updateAuth} />
+  <ScrollToTop/>
   <Routes>
     <Route path="/" element={(isAuth ||validateAuth(x)) ? <Home savings={Savings} updateSavings={updateSavings} />: <Navigate to='/login' />} />
     <Route path="login" element={(isAuth ||validateAuth(x)) ?<Navigate to='/' /> : <Login updateAuth={updateAuth}/>  } />

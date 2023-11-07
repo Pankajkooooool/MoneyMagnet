@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Mid1 from "../assets/mid1.webp"
+import Mid2 from "../assets/mid2.png"
 const MidRisk = ({savings}) => {
 
   let MidSavingAmt  = localStorage.getItem("savings");;
@@ -49,7 +51,7 @@ const MidRisk = ({savings}) => {
         
         </div>
       </div>
-      <img className=" md:h-96 w-full object-contain object-center" src="https://images.livemint.com/img/2021/03/16/original/term_plan_rates_1615881539537.jpg" alt="blog" />
+      <img className=" md:h-96 w-full object-contain object-center" src={Mid1} alt="blog" />
       <div className="pt-8 flex flex-wrap md:flex-nowrap" bis_skin_checked="1">
        
         <div className="md:flex-grow" bis_skin_checked="1">
@@ -58,7 +60,7 @@ const MidRisk = ({savings}) => {
         
         </div>
       </div>
-      <img className="lg:h-96  w-full object-contain object-center" src="https://www.serialpressit.com/wp-content/uploads/2022/03/Best-Health-Insurance-Plans-Policy-in-India.png" alt="blog" />
+      <img className="lg:h-96  w-full object-contain object-center" src={Mid2} alt="blog" />
       <div className="pt-8 flex flex-wrap md:flex-nowrap" bis_skin_checked="1">
       <div className="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2" bis_skin_checked="1">
        

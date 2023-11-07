@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Advice1 from "../assets/advice1.webp"
 const Advice = ({savings}) => {
   // Magic text 
   let index = 0,
@@ -90,7 +90,7 @@ for(const star of document.getElementsByClassName("magic-star")) {
         
         </div>
       </div>
-      <img className="lg:h-96 w-full object-contain object-center" src="https://g.foolcdn.com/image/?url=https%3A//g.foolcdn.com/editorial/images/560371/getty-millionaire.jpg&w=2000&op=resize" alt="blog" />
+      <img className="lg:h-96 w-full object-contain object-center" src={Advice1} alt="blog" />
     {/* Lets Go */}
       <div className='mtcbody'>
       <div className='mtc'>
