@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Advice1 from "../assets/advice1.webp"
 const Advice = ({savings}) => {
   // Magic text 
@@ -119,6 +120,13 @@ for(const star of document.getElementsByClassName("magic-star")) {
     </div>
   </div>
 </section>
+<div className="flex justify-center gap-5 pt-3">
+        <Link to="/ef">
+          <span className="text-white text-center bg-indigo-600 border-0 py-2 px-8 focus:outline-none hover-bg-indigo-600 rounded text-lg">
+            Prev
+          </span>
+        </Link>
+        </div>
   </div>
   )
 }
